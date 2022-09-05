@@ -1,0 +1,178 @@
+:root {
+        --colorone:linear-gradient(to right,steelblue,skyblue);
+        --colortwo:linear-gradient(to top,skyblue,steelblue);
+        --colorthree:linear-gradient(to left,steelblue,skyblue);
+}
+
+
+body {
+        height: 100vh;
+        display: grid;
+        padding: center;
+}
+
+.title {
+        margin-bottom: 50px;
+}
+
+.title h3 {
+        font-size: 40px;
+        font-weight: 300;
+        text-align: center;
+}
+
+.toggle-container {
+        display: flex;
+        justify-content: center;
+}
+
+.toggle-container > * {   /*  > = child selector /    * = all   */
+        margin: 0 3px;
+}
+
+.toggle-checkbox {
+        visibility: hidden;
+}
+
+.toggle-checkbox:checked + .toggle-label{  /*  + = adjecent sibling selector */
+        background-color: steelblue;
+}
+
+
+.toggle-label {
+        width: 40px;
+        height: 20px;
+        background-color: #bbb;
+        border-radius: 50px;
+        margin: 0 15px;
+        cursor: pointer;
+        position: relative;
+}
+
+.toggle-label .ball {
+        width: 15px;
+        height: 15px;
+        background-color: #f4f4f4;
+        border-radius: 50px;
+        position: absolute;
+        left: 2px; /*40*/
+        top: 2.5px;  /*20px*/
+
+        animation: offAnni .3s linear forwards;
+}
+
+
+.toggle-checkbox:checked + .toggle-label .ball {
+        animation: onAnni .3s linear forwards;
+}
+
+
+@keyframes onAnni {
+        0% {
+                transform: translate(0px) scale(1);
+        }
+        50% {
+                transform: translate(10px) scale(1.2); /* 7.5 + 5 = 12.5 /  2.5 + 2.5 = 5 / 1.5 + 1.5 = 2.5 /  15 = 7.5 / 20 - 7.5 = 12.5*/
+        }
+        100% {
+                transform: translate(18px) scale(1);    /*40 - 15 = 25 / 20 - 2 = 18 /  25 - 2 = 23 /  */
+        }
+}
+
+
+
+@keyframes offAnni {
+        0% {
+                transform: translate(18px) scale(1);
+        }
+        50% {
+                transform: translate(10px) scale(1.2);
+        }
+        100% {
+                transform: translate(0) scale(1);    /*40 - 15 = 25 / 20 - 2 = 18 / */
+        }
+}
+
+
+.price-container {
+        display: flex;
+}
+
+.price-box {
+        background-color: #fff;
+        width: 400px;
+        text-align: center;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.price-box p {
+        font-size: 20px;
+        background-color: steelblue;
+        padding: 20px 0;
+      }
+
+
+.price-box h3 span {
+        font-size: 30px;
+        vertical-align: middle; /*center for span*/
+}
+
+.price-box h3 span:nth-of-type(2) {
+        font-size: 50px;
+}
+
+
+.price-lists .list-group {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        margin-bottom: 50px;
+}
+
+.price-list .list-group li {
+        font-size: 16px;
+        padding: 20px 0;
+        border-bottom: 1px solid #eee;
+      }
+
+.price-lists .list-group li:first-child {
+       border-top: 1px solid #eee;
+}
+
+.price-lists .btn {
+        text-decoration: none;
+        background-color: green;
+        color: #fff;
+        font-size: 18px;
+        padding: 18px 45px;
+        border-radius: 5px;
+
+        transition: font-size .3s ease-in;
+}
+
+.price-lists  .btn:hover {
+        font-size: 20px;
+}
+
+.box {
+        color: #fff;
+        padding: 30px 0;
+}
+
+.box-one, .btn-one {
+        background: var(--colorone); /*linear-gradient can't affect in background-color*/
+}
+
+
+.box-two, .btn-two {
+        background: var(--colortwo);
+}
+
+
+.box-three, .btn-three {
+        background: var(--colorthree);
+}
+
+.price-box:nth-of-type(2) {
+        transform: scale(1.1);
+}
